@@ -1,0 +1,36 @@
+<mat-toolbar [ngStyle]="{'background-color':'white'}">
+  <mat-label bold mat-card-title [ngStyle]="{'color':'#673ab7'}" *ngIf="!isUpdate">Create Expense</mat-label>
+  <mat-label bold mat-card-title [ngStyle]="{'color':'#673ab7'}" *ngIf="isUpdate">Update Expense</mat-label>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form class="normal-form"  #expenseform="ngForm" (submit)="onSubmit(expenseform)">
+    <mat-grid-list cols="1" [rowHeight]="340">
+      <mat-grid-tile> 
+          <div class="controles-container">
+              <mat-form-field>
+                <input matInput placeholder="Expense Name" name="name" required [(ngModel)]="expense.name">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Description" name="description" required [(ngModel)]="expense.description">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Amount" name="amount" required [(ngModel)]="expense.amount">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Category" name="name" required [(ngModel)]="expense.category">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Select Date" name="date" required [(ngModel)]="expense.date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <div class="button-row">
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+                <button mat-raised-button color="warn" (click)="onClear(expenseform)">Clear</button>
+              </div>
+            </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+  

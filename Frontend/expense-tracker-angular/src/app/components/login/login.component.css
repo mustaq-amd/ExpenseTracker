@@ -1,0 +1,21 @@
+.login-form {
+    min-width: 150px;
+    max-width: 300px;
+    margin: auto;
+    
+  }
+  
+  .login-form-field {
+    width: 100%;
+  }
+  .login-card {
+    margin: auto;
+    max-width: 350px;
+    height: 300px;
+    border: 1px solid #673ab7;
+    margin-top: 60px;
+  }
+  .login-form-title{
+    text-align: center;
+    margin: 40px;
+  }
