@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './guard/auth.guard';
+import { HeaderComponent } from './components/header/header.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },

@@ -1,6 +1,8 @@
 <div class="list-container">
   <div class="search-div">
-    <button mat-raised-button (click)="createExpense()"><mat-icon>add</mat-icon>Create</button>
+    <button mat-raised-button (click)="createExpense()">
+      <mat-icon>add</mat-icon>Create
+    </button>
     <mat-form-field class="search-field" floatLabel="never">
       <input
         matInput
@@ -96,12 +98,7 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="loading">
-        <mat-footer-cell
-          *matFooterCellDef
-          [ngStyle]="{ 'font-style': 'italic', 'text-content': 'center' }"
-        >
-          Loading Data...
-        </mat-footer-cell>
+        <mat-footer-cell *matFooterCellDef> Loading Data... </mat-footer-cell>
       </ng-container>
       <ng-container matColumnDef="noData">
         <mat-footer-cell *matFooterCellDef> No Data... </mat-footer-cell>
@@ -117,7 +114,7 @@
       <tr
         mat-footer-row
         *matFooterRowDef="['noData']"
-        [ngClass]="{ hide: dataSource != null }"
+        [ngClass]="dataSource != null ? 'hide' : ''"
       ></tr>
     </table>
 

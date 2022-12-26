@@ -95,7 +95,7 @@ export class ListExpensesComponent implements OnInit {
     dialogConfig.width = '50%';
     this._expenseService.isUpdate = true;
     this._expenseService.expense = expense;
-    this.dialog.open(ExpenseComponent);
+    this.dialog.open(ExpenseComponent,dialogConfig);
   }
 
   deleteExpense(expense: Expense) {

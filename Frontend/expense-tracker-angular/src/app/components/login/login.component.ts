@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   proceedLogin(logindata: any) {
+    sessionStorage.removeItem('token');
     const loginModel = new Login();
     loginModel.email = this.email;
     loginModel.password = this.password;
@@ -50,7 +51,9 @@ export class LoginComponent implements OnInit {
         error: (err) => {
           alert('Login Failed');
         },
-        complete: () => this.route.navigate(['home']),
+        complete: () => {
+          this.route.navigate(['home'])
+        }
       });
     }
   }

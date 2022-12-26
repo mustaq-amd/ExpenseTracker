@@ -1,0 +1,23 @@
+.register-form {
+  min-width: 150px;
+  max-width: 300px;
+  margin: auto;
+}
+
+.register-form-field {
+  width: 100%;
+}
+.register-card {
+  margin: auto;
+  max-width: 350px;
+  height: 370px;
+  border: 1px solid #673ab7;
+  margin-top: 60px;
+}
+.register-form-title {
+  text-align: center;
+  margin: 40px;
+}
+.register-button{
+    margin: 10px 0 0 110px;
+}

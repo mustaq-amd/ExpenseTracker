@@ -1,1 +1,35 @@
-<p>register works!</p>
+<mat-card class="register-card">
+    <mat-card-title class="register-form-title">Register</mat-card-title>
+    <mat-card-content>
+        <form class="register-form"  #registerform="ngForm" (submit)="register(registerform)">
+
+            <mat-form-field class="register-form-field">
+                <mat-label>Full Name</mat-label>
+                <input type="text" matInput  
+                       placeholder="Please enter the name" name="name" required [(ngModel)]="name">
+              </mat-form-field>
+
+            <mat-form-field class="register-form-field">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput emailFormControl 
+                     placeholder="Ex. pat@example.com" name="email" required [(ngModel)]="email">
+            </mat-form-field>
+
+            <mat-form-field class="register-form-field">
+              <mat-label>Password</mat-label>
+              <input type="password"  passwordFormControl matInput name="password" required [(ngModel)]="password">
+            </mat-form-field>
+
+            <mat-form-field class="register-form-field">
+                <mat-label>Age</mat-label>
+                <input type="number" matInput  
+                       placeholder="Please enter the age" name="name" required [(ngModel)]="age">
+              </mat-form-field>
+
+            <div>
+              <button mat-raised-button class="register-button" color="primary">Submit</button>
+            </div>
+          </form>      
+    </mat-card-content>
+  </mat-card>
+  

@@ -12,6 +12,9 @@
 .hide {
   display: none;
 }
+.show{
+  display: contents;
+}
 center {
   text-align: center;
 }
