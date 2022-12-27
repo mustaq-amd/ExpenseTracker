@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-header',
@@ -8,16 +9,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-
   // to load header from login component using Subject
   subjectSubscription: Subscription;
 
   isLoggedIn: any;
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private dialogService: DialogService
+  ) {
     this.subjectSubscription = this.authService.getSubject().subscribe(() => {
       this.ngOnInit();
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -25,6 +28,13 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    this.dialogService
+      .openConfirmDialog('Are you sure to logout ?')
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) {
+          this.authService.logout();
+        }
+      });
   }
 }

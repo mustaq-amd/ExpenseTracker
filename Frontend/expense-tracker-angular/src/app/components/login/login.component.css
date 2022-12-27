@@ -19,3 +19,6 @@
     text-align: center;
     margin: 40px;
   }
+  .new-user:hover{
+    color: #673ab7;
+  }

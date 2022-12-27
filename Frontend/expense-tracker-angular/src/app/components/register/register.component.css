@@ -10,7 +10,6 @@
 .register-card {
   margin: auto;
   max-width: 350px;
-  height: 370px;
   border: 1px solid #673ab7;
   margin-top: 60px;
 }
@@ -18,6 +17,9 @@
   text-align: center;
   margin: 40px;
 }
-.register-button{
-    margin: 10px 0 0 110px;
+.register-button {
+  margin: 10px 0 0 50px;
+}
+.existing-user:hover {
+  color: #673ab7;
 }
