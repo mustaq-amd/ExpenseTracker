@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  
-  private login = new Subject();
+  // component communication using subject
+  private subject = new Subject<any>();
 
-  constructor() {}
-
-  setLogin(login) {
-    this.login.next(login);
+  setSubject() {
+    this.subject.next(this.subject);
   }
 
-  getLogin(): Observable<any>{
-    return this.login.asObservable();
+  getSubject(): Observable<any> {
+    return this.subject.asObservable();
   }
+
+  constructor(private route: Router) {}
 
   isLoggedIn() {
     if (sessionStorage.getItem('token') == null) {
@@ -30,11 +31,11 @@ export class AuthService {
     window.location.reload();
   }
 
-  getToken():any {
+  getToken(): any {
     return sessionStorage.getItem('token');
   }
 
-  setToken(token:any) {
+  setToken(token: any) {
     sessionStorage.setItem('token', token);
   }
 }

@@ -17,6 +17,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ExpenseComponent } from '../expense/expense.component';
 import { DialogService } from 'src/app/services/dialog.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-expenses',
@@ -24,7 +26,7 @@ import { NotificationService } from 'src/app/services/notification.service';
   styleUrls: ['./list-expenses.component.css'],
 })
 export class ListExpensesComponent implements OnInit {
-  //expenses: Expense[] = [];
+  subjectSubscription: Subscription;
   dataSource: MatTableDataSource<any>;
   searchKey: string;
 
@@ -33,8 +35,13 @@ export class ListExpensesComponent implements OnInit {
     private route: Router,
     private dialog: MatDialog,
     private dialogService: DialogService,
-    private notificationService: NotificationService
-  ) {}
+    private notificationService: NotificationService,
+    private authService: AuthService
+  ) {
+    this.subjectSubscription = this.authService.getSubject().subscribe(() => {
+      this.ngOnInit();
+    });
+  }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -95,7 +102,7 @@ export class ListExpensesComponent implements OnInit {
     dialogConfig.width = '50%';
     this._expenseService.isUpdate = true;
     this._expenseService.expense = expense;
-    this.dialog.open(ExpenseComponent,dialogConfig);
+    this.dialog.open(ExpenseComponent, dialogConfig);
   }
 
   deleteExpense(expense: Expense) {

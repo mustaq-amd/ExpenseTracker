@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Expense } from 'src/app/models/expense';
+import { AuthService } from 'src/app/services/auth.service';
 import { ExpenseService } from 'src/app/services/expense.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
@@ -23,7 +24,8 @@ export class ExpenseComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private expenseService: ExpenseService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -62,7 +64,7 @@ export class ExpenseComponent implements OnInit {
       error: (err) => {
         this.notificationService.warn(':: Expense Created Failed');
       },
-      complete: () => window.location.reload(),
+      complete: () => this.authService.setSubject(),
     });
   }
 

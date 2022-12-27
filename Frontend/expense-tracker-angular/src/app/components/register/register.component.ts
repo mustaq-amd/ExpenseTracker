@@ -39,10 +39,10 @@ export class RegisterComponent implements OnInit {
     if (registerform.valid) {
       this.userService.registerUser(userModel).subscribe({
         next: (res) => {
-          this.notificationService.warn('Registration Successfull');
+          this.notificationService.warn(':: Registration Successfull');
         },
         error: (err) => {
-          this.notificationService.warn('Registration Failed');
+          this.notificationService.warn(':: Registration Failed');
         },
         complete: () => {
           this.route.navigate(['login']);

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { Login } from 'src/app/models/login';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -31,7 +32,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private route: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {}
@@ -46,14 +48,16 @@ export class LoginComponent implements OnInit {
         next: (res) => {
           this.responseData = res;
           sessionStorage.setItem('token', this.responseData.jwtToken);
-          this.authService.setLogin(true);
+          //communicate to header component
+          this.authService.setSubject();
+          this.notificationService.success(":: Login Success")
         },
         error: (err) => {
-          alert('Login Failed');
+          this.notificationService.warn(":: Login Failed")
         },
         complete: () => {
-          this.route.navigate(['home'])
-        }
+          this.route.navigate(['home']);
+        },
       });
     }
   }

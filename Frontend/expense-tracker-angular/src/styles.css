@@ -68,7 +68,7 @@ snack-bar-container.success {
 }
 
 snack-bar-container.warn {
-  background-color: #f99157;
+  background-color: hwb(350 5% 10%);
   color: #fff;
 }
 
