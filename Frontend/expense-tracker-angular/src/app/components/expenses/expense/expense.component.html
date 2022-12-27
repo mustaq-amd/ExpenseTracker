@@ -2,7 +2,7 @@
   <mat-label bold mat-card-title [ngStyle]="{'color':'#673ab7'}" *ngIf="!isUpdate">Create Expense</mat-label>
   <mat-label bold mat-card-title [ngStyle]="{'color':'#673ab7'}" *ngIf="isUpdate">Update Expense</mat-label>
   <span class="fill-remaining-space"></span>
-  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1" class= "close-dialog"><mat-icon>clear</mat-icon></button>
 </mat-toolbar>
 <form class="normal-form"  #expenseform="ngForm" (submit)="onSubmit(expenseform)">
     <mat-grid-list cols="1" [rowHeight]="340">
