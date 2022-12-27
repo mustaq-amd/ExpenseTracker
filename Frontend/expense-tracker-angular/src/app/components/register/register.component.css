@@ -15,10 +15,10 @@
 }
 .register-form-title {
   text-align: center;
-  margin: 40px;
+  margin: 20px;
 }
 .register-button {
-  margin: 10px 0 0 50px;
+  margin: 10px 0 0 0;
 }
 .existing-user:hover {
   color: #673ab7;

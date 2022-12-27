@@ -11,13 +11,12 @@
   .login-card {
     margin: auto;
     max-width: 350px;
-    height: 300px;
     border: 1px solid #673ab7;
-    margin-top: 60px;
+    margin-top: 80px;
   }
   .login-form-title{
     text-align: center;
-    margin: 40px;
+    margin: 20px;
   }
   .new-user:hover{
     color: #673ab7;
