@@ -7,22 +7,28 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { catchError, finalize, map, Observable, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenInterceptorService implements HttpInterceptor {
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private loader: LoadingService
+  ) {}
 
   intercept(
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const token = this.authService.getToken();
-    let register = req.url.includes("register");
-  
+    let register = req.url.includes('register');
+
+    this.loader.showLoading();
     if (token != null && !register) {
       req = req.clone({
         setHeaders: {
@@ -42,6 +48,9 @@ export class TokenInterceptorService implements HttpInterceptor {
     return next.handle(req).pipe(
       map((event: HttpEvent<any>) => {
         return event;
+      }),
+      finalize(() => {
+        this.loader.hideLoading()
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {

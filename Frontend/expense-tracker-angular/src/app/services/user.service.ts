@@ -16,6 +16,9 @@ export class UserService {
   }
 
   registerUser(userModel: any): Observable<any> {
-    return this._httpClient.post(this.registerUrl, userModel);
+    console.log('reg : ', this._httpClient.post(this.registerUrl, userModel));
+    return this._httpClient.post(this.registerUrl, userModel, {
+      responseType: 'text',
+    });
   }
 }

@@ -14,7 +14,8 @@ export class RegisterComponent implements OnInit {
   name: string;
   email: string;
   password: string;
-  age: number;
+  dateOfBirth: Date;
+  mobile: string;
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -35,16 +36,20 @@ export class RegisterComponent implements OnInit {
     userModel.name = this.name;
     userModel.email = this.email;
     userModel.password = this.password;
-    userModel.age = this.age;
+    userModel.dateOfBirth = this.dateOfBirth;
+    userModel.mobile = this.mobile;
     if (registerform.valid) {
       this.userService.registerUser(userModel).subscribe({
         next: (res) => {
-          this.notificationService.warn(':: Registration Successfull');
+          console.log('register,', res);
+          this.notificationService.success(':: Registration Successfull');
         },
         error: (err) => {
+          console.log('err', err);
           this.notificationService.warn(':: Registration Failed');
         },
         complete: () => {
+          console.log('register complete');
           this.route.navigate(['login']);
         },
       });
