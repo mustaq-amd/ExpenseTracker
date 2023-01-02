@@ -26,6 +26,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
+
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -77,6 +82,9 @@ import { MatDialogComponent } from './components/mat-dialog/mat-dialog.component
     MatNativeDateModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
+    MatMenuModule,
+    NgbModule,
   ],
   providers: [
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },

@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   responseData: any;
   email: any;
   password: any;
+  valid: boolean = false;
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -38,6 +39,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  ngDoCheck() {
+    console.log('hellooooo ', this.email, this.valid);
+    if (this.email != undefined) {
+      this.valid = true;
+    }
+  }
+
+  closeLogin() {
+    this.route.navigate(['home']);
+  }
+
   proceedLogin(logindata: any) {
     sessionStorage.removeItem('token');
     const loginModel = new Login();
@@ -50,10 +62,10 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('token', this.responseData.jwtToken);
           //communicate to header component
           this.authService.setSubject();
-          this.notificationService.success(":: Login Success")
+          this.notificationService.success(':: Login Success');
         },
         error: (err) => {
-          this.notificationService.warn(":: Login Failed")
+          this.notificationService.warn(':: Login Failed');
         },
         complete: () => {
           this.route.navigate(['home']);

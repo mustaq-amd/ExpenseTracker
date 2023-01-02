@@ -9,17 +9,20 @@
 }
 .register-card {
   margin: auto;
-  max-width: 350px;
-  border: 1px solid #673ab7;
-  margin-top: 60px;
+  max-width: 420px;
+  margin-top: 20px;
 }
 .register-form-title {
   text-align: center;
-  margin: 20px;
 }
 .register-button {
   margin: 10px 0 0 0;
 }
 .existing-user:hover {
   color: #673ab7;
+}
+.btn-dialog-close{
+  border: none;
+  margin-left: 85%;
+  margin-bottom: 10px;
 }

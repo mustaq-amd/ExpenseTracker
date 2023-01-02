@@ -10,14 +10,34 @@
   }
   .login-card {
     margin: auto;
-    max-width: 350px;
-    border: 1px solid #673ab7;
-    margin-top: 80px;
+    max-width: 420px;
+    margin-top: 40px;
   }
   .login-form-title{
-    text-align: center;
-    margin: 20px;
+    margin-left: 40px;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 10px;
   }
   .new-user:hover{
     color: #673ab7;
+  }
+  .new-user{
+    margin-left: 68px;
+  }
+  .login{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .forgot-password{
+    text-decoration: none;
+    color: black;
+    margin-left: 30%;
+    font-size: 14px;
+  }
+  .btn-dialog-close{
+    border: none;
+    margin-left: 85%;
+    margin-bottom: 10px;
   }

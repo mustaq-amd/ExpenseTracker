@@ -31,6 +31,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  closeRegister() {
+    this.route.navigate(['home']);
+  }
+
   register(registerform: any) {
     const userModel = new User();
     userModel.name = this.name;

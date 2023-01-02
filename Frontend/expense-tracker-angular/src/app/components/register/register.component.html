@@ -1,41 +1,82 @@
 <mat-card class="register-card">
-    <mat-card-title class="register-form-title">Register</mat-card-title>
-    <mat-card-content>
-        <form class="register-form"  #registerform="ngForm" (submit)="register(registerform)">
+  <button class="btn-dialog-close" mat-stroked-button (click)="closeRegister()">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <mat-card-title class="register-form-title">Register</mat-card-title>
+  <mat-card-content>
+    <form
+      class="register-form"
+      #registerform="ngForm"
+      (submit)="register(registerform)"
+    >
+      <mat-form-field class="register-form-field">
+        <mat-label>Full Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Please enter the name"
+          name="name"
+          required
+          [(ngModel)]="name"
+        />
+      </mat-form-field>
 
-            <mat-form-field class="register-form-field">
-                <mat-label>Full Name</mat-label>
-                <input type="text" matInput  
-                       placeholder="Please enter the name" name="name" required [(ngModel)]="name">
-              </mat-form-field>
+      <mat-form-field class="register-form-field">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          emailFormControl
+          placeholder="Ex. pat@example.com"
+          name="email"
+          required
+          [(ngModel)]="email"
+        />
+      </mat-form-field>
 
-            <mat-form-field class="register-form-field">
-              <mat-label>Email</mat-label>
-              <input type="email" matInput emailFormControl 
-                     placeholder="Ex. pat@example.com" name="email" required [(ngModel)]="email">
-            </mat-form-field>
+      <mat-form-field class="register-form-field">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          passwordFormControl
+          matInput
+          name="password"
+          required
+          [(ngModel)]="password"
+        />
+      </mat-form-field>
+      <mat-form-field class="register-form-field">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="Date of Birth"
+          name="dateOfBirth"
+          required
+          [(ngModel)]="dateOfBirth"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="register-form-field">
+        <mat-label>Mobile</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Please enter the mobile number"
+          name="mobile"
+          required
+          [(ngModel)]="mobile"
+        />
+      </mat-form-field>
 
-            <mat-form-field class="register-form-field">
-              <mat-label>Password</mat-label>
-              <input type="password"  passwordFormControl matInput name="password" required [(ngModel)]="password">
-            </mat-form-field>
-
-            <mat-form-field class="register-form-field">
-                <mat-label>Date Of Birth</mat-label>
-                <input type="date" matInput  
-                       placeholder="Please enter the age" name="dateOfBirth" required [(ngModel)]="dateOfBirth">
-              </mat-form-field>
-              <mat-form-field class="register-form-field">
-                <mat-label>Mobile</mat-label>
-                <input type="text" matInput  
-                       placeholder="Please enter the mobile number" name="mobile" required [(ngModel)]="mobile">
-              </mat-form-field>
-
-            <div>
-              <button mat-raised-button class="register-button" color="primary">Register</button>
-              <a mat-button routerLink="/login" class="existing-user">Existing User, Login?</a>
-            </div>
-          </form>      
-    </mat-card-content>
-  </mat-card>
-  
+      <div>
+        <button mat-raised-button class="register-button" color="primary">
+          Register
+        </button>
+        <a mat-button routerLink="/login" class="existing-user"
+          >Existing User, Login?</a
+        >
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
